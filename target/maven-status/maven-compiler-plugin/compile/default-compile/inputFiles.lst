@@ -1,0 +1,10 @@
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/config/AppConfig.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/model/Device.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/model/Measurement.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/repository/DeviceRepository.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/repository/MeasurementRepository.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/service/DeviceService.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/servlet/AddDeviceServlet.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/servlet/BaseSpringServlet.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/servlet/ListDevicesServlet.java
+/home/runner/work/ALJP/ALJP/src/main/java/com/aljp/servlet/UpdateDeviceEstateServlet.java

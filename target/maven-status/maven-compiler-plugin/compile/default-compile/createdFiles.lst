@@ -1,0 +1,10 @@
+com/aljp/service/DeviceService.class
+com/aljp/servlet/AddDeviceServlet.class
+com/aljp/model/Measurement.class
+com/aljp/config/AppConfig.class
+com/aljp/servlet/BaseSpringServlet.class
+com/aljp/repository/DeviceRepository.class
+com/aljp/model/Device.class
+com/aljp/servlet/ListDevicesServlet.class
+com/aljp/servlet/UpdateDeviceEstateServlet.class
+com/aljp/repository/MeasurementRepository.class
