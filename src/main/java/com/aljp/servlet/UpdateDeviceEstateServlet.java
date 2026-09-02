@@ -29,7 +29,7 @@ public class UpdateDeviceEstateServlet extends BaseSpringServlet {
             out.println("<a href='" + req.getContextPath() + "/devices'>Volver al listado</a>");
             out.println("</body></html>");
         } catch (RuntimeException e) {
-            renderForm(resp, e.getMessage());
+            renderForm(resp, "No fue posible actualizar el estado. Verifica los datos.");
         }
     }
 
@@ -39,7 +39,7 @@ public class UpdateDeviceEstateServlet extends BaseSpringServlet {
         out.println("<html><body>");
         out.println("<h2>Actualizar Estate del Dispositivo</h2>");
         if (errorMessage != null) {
-            out.println("<p style='color:red;'>" + errorMessage + "</p>");
+            out.println("<p style='color:red;'>" + escapeHtml(errorMessage) + "</p>");
         }
         out.println("<form method='post'>");
         out.println("ID del dispositivo: <input type='number' name='id' required/><br/><br/>");
@@ -51,5 +51,17 @@ public class UpdateDeviceEstateServlet extends BaseSpringServlet {
         out.println("</form>");
         out.println("<br/><a href='devices'>Ver dispositivos</a>");
         out.println("</body></html>");
+    }
+
+    private String escapeHtml(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
     }
 }

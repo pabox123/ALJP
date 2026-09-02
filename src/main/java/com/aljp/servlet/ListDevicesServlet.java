@@ -28,15 +28,27 @@ public class ListDevicesServlet extends BaseSpringServlet {
         for (Device device : deviceService.listDevices()) {
             out.println("<tr>");
             out.println("<td>" + device.getId() + "</td>");
-            out.println("<td>" + device.getName() + "</td>");
-            out.println("<td>" + device.getSerialNumber() + "</td>");
-            out.println("<td>" + device.getUbicación() + "</td>");
-            out.println("<td>" + device.getType() + "</td>");
-            out.println("<td>" + device.getEstate() + "</td>");
+            out.println("<td>" + escapeHtml(device.getName()) + "</td>");
+            out.println("<td>" + escapeHtml(device.getSerialNumber()) + "</td>");
+            out.println("<td>" + escapeHtml(device.getUbicación()) + "</td>");
+            out.println("<td>" + escapeHtml(device.getType()) + "</td>");
+            out.println("<td>" + escapeHtml(device.getEstate()) + "</td>");
             out.println("</tr>");
         }
 
         out.println("</table>");
         out.println("</body></html>");
+    }
+
+    private String escapeHtml(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
     }
 }

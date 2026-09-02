@@ -34,11 +34,10 @@ public class AddDeviceServlet extends BaseSpringServlet {
             out.println("<html><body>");
             out.println("<h2>Dispositivo registrado con éxito</h2>");
             out.println("<p>ID: " + createdDevice.getId() + "</p>");
-            out.println("<p>Nombre: " + createdDevice.getName() + "</p>");
             out.println("<a href='" + req.getContextPath() + "/devices'>Ver dispositivos</a>");
             out.println("</body></html>");
         } catch (IllegalArgumentException e) {
-            renderForm(resp, e.getMessage());
+            renderForm(resp, "No fue posible registrar el dispositivo. Verifica los datos.");
         }
     }
 
@@ -55,7 +54,7 @@ public class AddDeviceServlet extends BaseSpringServlet {
         out.println("<html><body>");
         out.println("<h2>Agregar Dispositivo IoT</h2>");
         if (errorMessage != null) {
-            out.println("<p style='color:red;'>" + errorMessage + "</p>");
+            out.println("<p style='color:red;'>" + escapeHtml(errorMessage) + "</p>");
         }
         out.println("<form method='post'>");
         out.println("ID (opcional): <input type='number' name='id'/><br/><br/>");
@@ -71,5 +70,17 @@ public class AddDeviceServlet extends BaseSpringServlet {
         out.println("</form>");
         out.println("<br/><a href='devices'>Ver dispositivos</a>");
         out.println("</body></html>");
+    }
+
+    private String escapeHtml(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value
+                .replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
     }
 }
